@@ -11,7 +11,7 @@ RUN dotnet publish -c Release -o out
 # stage runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /App
-COPY --from=build /app/out .
+COPY --from=build /App/out .
 
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
