@@ -15,6 +15,13 @@ namespace WorkspaceService.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_service.GetAll());
+        }
+
+
         [HttpPost]
         public IActionResult Create([FromBody] CreateWorkspaceDto dto)
         {
