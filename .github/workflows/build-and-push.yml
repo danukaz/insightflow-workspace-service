@@ -32,8 +32,8 @@ jobs:
           file: ./WorkspaceService/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/insightflow-workspaces:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/insightflow-workspaces:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/insightflow-workspace-service:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/insightflow-workspace-service:${{ github.sha }}
 
       - name: Trigger Render Deploy Hook
         if: success()
