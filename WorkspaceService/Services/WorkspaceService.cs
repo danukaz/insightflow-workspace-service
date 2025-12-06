@@ -40,6 +40,10 @@ namespace WorkspaceService.Services
             return workspace;
         }
 
+        public List<Workspace> GetAll()
+        {
+            return _repo.GetAll().Where(w => w.IsActive).ToList();
+        }
         public List<Workspace> GetByUser(Guid userId)
         {
             return _repo.GetAll()

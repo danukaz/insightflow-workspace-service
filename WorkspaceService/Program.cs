@@ -1,5 +1,7 @@
 using WorkspaceService.Repository;
 using WorkspaceService.Services;
+using WorkspaceService.Seeders;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +20,15 @@ builder.Services.AddScoped<WorkspaceServiceImpl>();
 
 var app = builder.Build();
 
+
 app.UseCors("AllowAll");
-app.UseHttpsRedirection();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var repo = scope.ServiceProvider.GetRequiredService<IWorkspaceRepository>();
+    WorkspaceSeeder.Seed(repo);
+}
+
 app.Run();
