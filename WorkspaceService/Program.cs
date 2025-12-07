@@ -17,6 +17,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IWorkspaceRepository, InMemoryWorkspaceRepository>();
 builder.Services.AddScoped<WorkspaceServiceImpl>();
+builder.Services.AddSingleton<CloudinaryService>();
+
 
 var app = builder.Build();
 

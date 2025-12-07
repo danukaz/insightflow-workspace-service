@@ -23,9 +23,9 @@ namespace WorkspaceService.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateWorkspaceDto dto)
+        public async Task<IActionResult> Create([FromForm] CreateWorkspaceDto dto)
         {
-            var ws = _service.Create(dto);
+            var ws = await _service.CreateAsync(dto);
             return Ok(ws);
         }
 
@@ -43,11 +43,10 @@ namespace WorkspaceService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(Guid id, Guid requesterId, [FromBody] UpdateWorkspaceDto dto)
+        public async Task<IActionResult> Update(Guid id, Guid requesterId, [FromForm] UpdateWorkspaceDto dto)
         {
-            return Ok(_service.Update(id, dto, requesterId));
+            return Ok(await _service.UpdateAsync(id, dto, requesterId));
         }
-
         [HttpDelete("{id}")]
         public IActionResult SoftDelete(Guid id, Guid requesterId)
         {
