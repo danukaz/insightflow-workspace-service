@@ -9,7 +9,7 @@ namespace WorkspaceService.DTOs
 
         public string? Description { get; set; }
         public string? Theme { get; set; }
-        public string? IconUrl { get; set; } // URL para la imagen
+        public IFormFile Icon { get; set; } // archivo
         public Guid UserId { get; set; }     // Usuario autenticado (simulado)
     }
 }
